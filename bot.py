@@ -1,4 +1,3 @@
-import json
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, filters
@@ -6,11 +5,11 @@ from telegram.request import HTTPXRequest
 
 # ===== CONFIG =====
 TOKEN = "8654195292:AAHtm-Y6O8wTBd7tRZbtDdiE-hNDgQzMab8"
-API_KEY = "788f5f7406b81fc61b73a0eba8d5e572883a0862"
-SERVICE_ID = 1658
-CHANNEL_USERNAME = "IG_LOOTERS"
+API_KEY = "0e8ea1b7a669636d27156f56a15f4b5d87b0b79f"
 
-API_URL = "https://smmvault.in/api/v2"
+API_URL = "https://mysmmapi.com/api/v2"
+SERVICE_ID = 4807
+CHANNEL_USERNAME = "IG_LOOTERS"
 
 # ===== STATE =====
 AUTO_ON = False
@@ -30,7 +29,7 @@ async def stop_orders(update: Update, context: ContextTypes.DEFAULT_TYPE):
     AUTO_ON = False
     await update.message.reply_text("Auto Views OFF")
 
-# ===== AUTO VIEWS =====
+# ===== AUTO VIEW SYSTEM =====
 async def auto_views(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global AUTO_ON
 
@@ -42,6 +41,7 @@ async def auto_views(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     post_id = str(update.channel_post.message_id)
 
+    # duplicate block
     if post_id in DONE:
         return
 
