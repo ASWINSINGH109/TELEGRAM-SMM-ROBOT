@@ -428,8 +428,17 @@ async def cmd_start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
     if not await is_member(ctx.bot, user.id):
         await update.message.reply_text(
-            "❌ *You must join our channel to continue.*\n\n"
-            "Please join and then press 🔄 Check Again.",
+            "🚫 *ACCESS DENIED*\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "📢 *Join Our Official Channel*\n\n"
+            "To use this bot, you must join our channel first.\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "⚡ *Steps:*\n"
+            "1. Tap *Join Channel* below\n"
+            "2. Come back here\n"
+            "3. Press *Check Again*\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "💡 *Note:* Access is locked until you join.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=not_joined_keyboard(),
         )
@@ -453,7 +462,17 @@ async def cb_check_join(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
     if not await is_member(ctx.bot, user.id):
         await query.edit_message_text(
-            "❌ *Still not joined.*\n\nJoin the channel then press 🔄 Check Again.",
+            "🚫 *ACCESS DENIED*\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "📢 *Join Our Official Channel*\n\n"
+            "You haven't joined yet. Please join and try again.\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "⚡ *Steps:*\n"
+            "1. Tap *Join Channel* below\n"
+            "2. Come back here\n"
+            "3. Press *Check Again*\n\n"
+            "━━━━━━━━━━━━━━━━━━━\n\n"
+            "💡 *Note:* Access is locked until you join.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=not_joined_keyboard(),
         )
