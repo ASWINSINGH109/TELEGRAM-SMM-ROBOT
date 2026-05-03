@@ -27,7 +27,7 @@ from telegram.request import HTTPXRequest
 # ══════════════════════════════════════════════
 #  CONFIG  ← Only edit BOT_TOKEN and API_KEY
 # ══════════════════════════════════════════════
-BOT_TOKEN        = "8520728694:AAGc3vh6HO0x_s3CtkJnDLviw1VlMpykflI"
+BOT_TOKEN        = "8602583322:AAHDlK02GGHZI8xkE_pvhHpiGe7wnpsE3fQ"
 ADMIN_PASSWORD   = os.getenv("ADMIN_PASS", "ASHU22/01/2007")  # set env ADMIN_PASS to override
 CHANNEL_USERNAME = "IG_LOOTERS"
 CHANNEL_LINK     = "https://t.me/IG_LOOTERS"
