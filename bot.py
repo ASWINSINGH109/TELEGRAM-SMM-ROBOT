@@ -232,16 +232,6 @@ def record_order(data: dict, uid: int) -> None:
     data["users"][s]["last_order_date"] = _today_str()
 
 
-def has_recent_order_for_link(data: dict, uid: int, link: str) -> bool:
-    """Return True if user placed an order for this exact link in the last 24h."""
-    cutoff = time.time() - 86400
-    for entry in data.get("orders_log", []):
-        if entry.get("user_id") == uid and entry.get("link") == link:
-            if entry.get("ts", 0) >= cutoff:
-                return True
-    return False
-
-
 def log_order(data: dict, uid: int, qty: int, link: str, order_id) -> None:
     """Append entry to global orders_log, keep last 50."""
     data.setdefault("orders_log", []).append({
@@ -1104,19 +1094,6 @@ async def cb_confirm_order(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     if not allowed:
         await query.edit_message_text(
             f"❌ *Order Blocked*\n\n{reason}",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🔙 Back", callback_data="back_menu")],
-            ]),
-        )
-        return
-
-    # ── Duplicate link guard ────────────────
-    if has_recent_order_for_link(data, user.id, link):
-        await query.edit_message_text(
-            "⚠️ *Duplicate Order Blocked*\n\n"
-            "You already placed an order for this link in the last 24 hours.\n"
-            "Please wait before re-ordering the same post.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("🔙 Back", callback_data="back_menu")],
